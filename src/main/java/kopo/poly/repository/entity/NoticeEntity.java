@@ -1,4 +1,4 @@
-package kopo.poly.repository;
+package kopo.poly.repository.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
