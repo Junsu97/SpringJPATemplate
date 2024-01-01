@@ -42,7 +42,7 @@ public class NoticeEntity {
 
     @NonNull
     @Column(name = "reg_cnt", nullable = false)
-    private String regCnt;
+    private Long readCnt;
 
     @NonNull
     @Column(name = "reg_id", nullable = false)
