@@ -1,9 +1,6 @@
 package kopo.poly.repository.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -40,23 +37,23 @@ public class NoticeEntity {
     @Column(name = "user_id", nullable = false)
     private String userId;
 
-    @NonNull
+
     @Column(name = "reg_cnt", nullable = false)
     private Long readCnt;
 
-    @NonNull
+
     @Column(name = "reg_id", nullable = false)
     private String regId;
 
-    @NonNull
+
     @Column(name = "reg_dt", nullable = false)
     private String regDt;
 
-    @NonNull
+
     @Column(name = "chg_id", nullable = false)
     private String chgId;
 
-    @NonNull
+
     @Column(name = "chg_dt", nullable = false)
     private String chgDt;
 }
