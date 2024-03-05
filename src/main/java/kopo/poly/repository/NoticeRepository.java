@@ -29,7 +29,7 @@ public interface NoticeRepository extends JpaRepository<NoticeEntity,Long> {
      * @return 공지사항 상세보기 조회수 증가
      */
     @Modifying(clearAutomatically = true)
-    @Query(value="UPDATE NOTICE A SEA A.READ_CNT = IFNULL(A.READ_CNT,0) + 1 WHERE A.NOTICE_SEQ = ?noticeSeq"
+    @Query(value="UPDATE NOTICE A SET A.READ_CNT = IFNULL(A.READ_CNT,0) + 1 WHERE A.NOTICE_SEQ = :noticeSeq"
         ,nativeQuery = true)
     int updateReadCnt(@Param(value="noticeSeq")Long noticeSeq);
 }

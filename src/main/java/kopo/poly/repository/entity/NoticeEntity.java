@@ -38,7 +38,7 @@ public class NoticeEntity {
     private String userId;
 
 
-    @Column(name = "reg_cnt", nullable = false)
+    @Column(name = "read_cnt", nullable = false)
     private Long readCnt;
 
 

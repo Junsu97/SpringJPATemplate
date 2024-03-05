@@ -129,7 +129,7 @@ public class NoticeController {
     @GetMapping(value = "noticeInfo")
     public String noticeInfo(HttpServletRequest request, ModelMap model) throws Exception{
         log.info(this.getClass().getName() + ".noticeInfo Start!!!");
-        String nSeq = CmmUtil.nvl(this.getClass().getName() + ".noticeInfo Start!!!");
+        String nSeq = CmmUtil.nvl(request.getParameter("nSeq"));
 
         log.info("nSeq : " + nSeq);
 

@@ -142,7 +142,7 @@ public class NoticeService implements INoticeService {
          * JPA에 자종 증가 설정 해둠
          * */
         NoticeEntity pEntity = NoticeEntity.builder()
-                                .title(title)
+                                .title(title).noticeYn(noticeYn)
                                 .contents(contents)
                                 .userId(userId).readCnt(0L)
                                 .regId(userId)
