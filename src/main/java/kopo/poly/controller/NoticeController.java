@@ -9,7 +9,6 @@ import kopo.poly.util.CmmUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -100,11 +99,12 @@ public class NoticeController {
             log.info("contents : " + contents);
             
             // 데이터에 저장하기 위해 DTO에 담기
-            NoticeDTO pDTO = new NoticeDTO();
-            pDTO.setUserId(userId);
-            pDTO.setTitle(title);
-            pDTO.setNoticeYn(noticeYn);
-            pDTO.setContents(contents);
+            NoticeDTO pDTO = NoticeDTO.builder()
+                    .userId(userId)
+                    .title(title)
+                    .noticeYn(noticeYn)
+                    .contents(contents)
+                    .build();
 
             noticeService.insertNoticeInfo(pDTO);
             
@@ -133,11 +133,11 @@ public class NoticeController {
 
         log.info("nSeq : " + nSeq);
 
-        NoticeDTO pDTO = new NoticeDTO();
-        pDTO.setNoticeSeq(Long.parseLong(nSeq));
+        NoticeDTO pDTO = NoticeDTO.builder().noticeSeq(Long.parseLong(nSeq)).build();
 
-        NoticeDTO rDTO = Optional.ofNullable(noticeService.getNoticeInfo(pDTO, true))
-                        .orElseGet(NoticeDTO::new);
+        NoticeDTO rDTO = Optional.ofNullable(noticeService.getNoticeInfo(pDTO,false))
+                .orElse(NoticeDTO.builder().build());
+
 
         model.addAttribute("rDTO", rDTO);
 
@@ -156,11 +156,11 @@ public class NoticeController {
 
         log.info("nSeq : " + nSeq);
 
-        NoticeDTO pDTO = new NoticeDTO();
-        pDTO.setNoticeSeq(Long.parseLong(nSeq));
+        NoticeDTO pDTO = NoticeDTO.builder().noticeSeq(Long.parseLong(nSeq)).build();
 
         NoticeDTO rDTO = Optional.ofNullable(noticeService.getNoticeInfo(pDTO,false))
-                        .orElseGet(NoticeDTO::new);
+                .orElse(NoticeDTO.builder().build());
+
 
         model.addAttribute("rDTO", rDTO);
         log.info(this.getClass().getName() + ".noticeEditInfo End!!!");
@@ -190,11 +190,12 @@ public class NoticeController {
             log.info("contents : " + contents);
 
             // 데이터에 저장하기 위해 DTO에 담기
-            NoticeDTO pDTO = new NoticeDTO();
-            pDTO.setUserId(userId);
-            pDTO.setTitle(title);
-            pDTO.setNoticeYn(noticeYn);
-            pDTO.setContents(contents);
+            NoticeDTO pDTO = NoticeDTO.builder()
+                    .userId(userId)
+                    .title(title)
+                    .noticeYn(noticeYn)
+                    .contents(contents).build();
+
 
             noticeService.updateNoticeInfo(pDTO);
 
@@ -228,8 +229,7 @@ public class NoticeController {
 
             log.info("nSeq : " + nSeq);
 
-            NoticeDTO pDTO = new NoticeDTO();
-            pDTO.setNoticeSeq(Long.parseLong(nSeq));
+            NoticeDTO pDTO = NoticeDTO.builder().noticeSeq(Long.parseLong(nSeq)).build();
 
             noticeService.deleteNoticeInfo(pDTO);
 
