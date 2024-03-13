@@ -116,8 +116,7 @@ public class NoticeController {
             log.info(e.toString());
             e.printStackTrace();
         }finally {
-            dto = new MsgDTO();
-            dto.setMsg(msg);
+            dto = MsgDTO.builder().msg(msg).build();
             log.info(this.getClass().getName() + ".noticeInsert End!!!");
         }
         return dto;
@@ -205,8 +204,7 @@ public class NoticeController {
             log.info(e.toString());
             e.printStackTrace();
         }finally {
-            dto = new MsgDTO();
-            dto.setMsg(msg);
+            dto = MsgDTO.builder().msg(msg).build();
 
             log.info(this.getClass().getName() + ".noticeUpdate End!!");
         }
@@ -239,8 +237,7 @@ public class NoticeController {
             log.info(e.toString());
             e.printStackTrace();;
         }finally {
-            dto = new MsgDTO();
-            dto.setMsg(msg);
+            dto = MsgDTO.builder().msg(msg).build();
             log.info(this.getClass().getName() + ".noticeDelete End!!!");
         }
         return dto;
