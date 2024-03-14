@@ -66,4 +66,22 @@ public class NoticeJoinController {
 
         return "notice/noticeListJoin";
     }
+
+    @GetMapping(value = "noticeListUsingQueryDSL")
+    public String noticeListUsingQueryDSL(HttpSession session, ModelMap model)throws Exception{
+        log.info(this.getClass().getName() + ".noticeListUsingQueryDSL Start!!!");
+
+        session.setAttribute("SESSION_USER_ID", "USER01");
+
+
+        List<NoticeDTO> rList = Optional.ofNullable(noticeJoinService.getNoticeListForQueryDSL())
+                        .orElseGet(ArrayList::new);
+
+        model.addAttribute("rList", rList);
+
+
+        log.info(this.getClass().getName() + ".noticeListUsingQueryDSL End!!!");
+
+        return "notice/noticeListJoin";
+    }
 }
