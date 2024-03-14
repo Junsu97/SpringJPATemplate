@@ -14,6 +14,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @DynamicUpdate
 @Builder
 @Entity
+@Cacheable
 public class NoticeEntity {
 
     @Id
@@ -23,6 +24,8 @@ public class NoticeEntity {
 
     @NonNull
     @Column(name = "title", length = 500, nullable = false)
+    // nullable = false 는 DB에서 null을 허용하지 않음
+    // @NonNull은 자바 파일에서 Null을 허용하지 않음
     private String title;
 
     @NonNull
