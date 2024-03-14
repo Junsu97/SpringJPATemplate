@@ -4,8 +4,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
 import kopo.poly.dto.NoticeDTO;
+import kopo.poly.repository.NoticeJoinRepository;
 import kopo.poly.repository.NoticeRepository;
 import kopo.poly.repository.entity.NoticeEntity;
+import kopo.poly.repository.entity.NoticeJoinEntity;
 import kopo.poly.service.INoticeService;
 import kopo.poly.util.CmmUtil;
 import kopo.poly.util.DateUtil;
@@ -13,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @Slf4j
@@ -25,6 +28,9 @@ public class NoticeService implements INoticeService {
      * 예전에는 autowired 어노테이션을 통해 설정했지만, 이젠 생성자를 통해 객체를 주입한다.
      * */
     private final NoticeRepository noticeRepository;
+
+
+
     @Override
     public List<NoticeDTO> getNoticeList() {
         log.info(this.getClass().getName() + ".getNoticeList Start!!");

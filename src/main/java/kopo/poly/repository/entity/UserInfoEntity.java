@@ -1,9 +1,6 @@
 package kopo.poly.repository.entity;
 
-import jakarta.persistence.Cacheable;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -15,7 +12,8 @@ import org.hibernate.annotations.DynamicUpdate;
 @DynamicInsert
 @DynamicUpdate
 @Builder
-@Cacheable
+@Table(name ="USER_INFO")
+//@Cacheable
 public class UserInfoEntity {
     @Id
     @Column(name = "USER_ID")
@@ -26,7 +24,7 @@ public class UserInfoEntity {
     private String userName;
 
     @NonNull
-    @Column(name = "PASSWORD", length = 1, nullable = false)
+    @Column(name = "PASSWORD", length = 100, nullable = false)
     private String password;
 
     @NonNull
@@ -52,4 +50,7 @@ public class UserInfoEntity {
 
     @Column(name = "CHG_DT")
     private String chgDt;
+
+    @Column(name = "ROLES")
+    private String roles;
 }

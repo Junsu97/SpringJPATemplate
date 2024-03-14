@@ -5,6 +5,8 @@ import kopo.poly.dto.NoticeDTO;
 import java.util.List;
 
 public interface INoticeService {
+
+
     /**
      * 
      * @return 공지사항 전체 리턴

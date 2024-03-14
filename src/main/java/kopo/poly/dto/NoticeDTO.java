@@ -9,7 +9,7 @@ public record NoticeDTO(
         String noticeYn, // 공지 여부
         String contents, // 본문
         String userId,  // 작성자
-        String readCnt, //조회수
+        Long readCnt, //조회수
         String regId, // 등록자 아이디
         String regDt, // 등록일
         String chgId, // 수정자 아이디

@@ -15,5 +15,6 @@ public record UserInfoDTO(
         String chgId,
         String chgDt,
 
-        String existYn) {
+        String existYn
+) {
 }
