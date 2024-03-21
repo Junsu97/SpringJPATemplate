@@ -10,6 +10,4 @@ public interface IUserInfoService {
     int getUserLogin(UserInfoDTO pDTO) throws Exception;
 
     void deleteUserInfo(UserInfoDTO pDTO) throws Exception;
-
-
 }

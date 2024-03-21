@@ -13,6 +13,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @DynamicUpdate
 @Builder
 @Table(name ="USER_INFO")
+@Cacheable
 //@Cacheable
 public class UserInfoEntity {
     @Id
@@ -50,7 +51,4 @@ public class UserInfoEntity {
 
     @Column(name = "CHG_DT")
     private String chgDt;
-
-    @Column(name = "ROLES")
-    private String roles;
 }

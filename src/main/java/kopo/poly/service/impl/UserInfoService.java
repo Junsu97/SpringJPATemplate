@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Slf4j
-@Service("UserInfoService")
+@Service
 public class UserInfoService implements IUserInfoService {
     private final UserInfoRepository userInfoRepository;
 
@@ -44,7 +44,7 @@ public class UserInfoService implements IUserInfoService {
     public int insertUserInfo(UserInfoDTO pDTO) throws Exception {
         log.info(this.getClass().getName() + ".insertUserInfo Start!!");
 
-        int res = 0;
+        int res;
 
         String userId = CmmUtil.nvl(pDTO.userId());
         String userName = CmmUtil.nvl(pDTO.userName());
@@ -53,12 +53,7 @@ public class UserInfoService implements IUserInfoService {
         String addr1 = CmmUtil.nvl(pDTO.addr1());
         String addr2 = CmmUtil.nvl(pDTO.addr2());
 
-        log.info("userId : " + userId);
-        log.info("userName : " + userName);
-        log.info("password : " + password);
-        log.info("email : " + email);
-        log.info("addr1 : " + addr1);
-        log.info("addr2 : " + addr2);
+        log.info("pDTO : " + pDTO);
 
         Optional<UserInfoEntity> rEntity = userInfoRepository.findByUserId(userId);
 
@@ -104,14 +99,22 @@ public class UserInfoService implements IUserInfoService {
 
         log.info("userId : " + userId);
         log.info("password : " + password);
-        return 0;
+
+        Optional<UserInfoEntity> rEntity = userInfoRepository.findByUserIdAndPassword(userId, password);
+
+        if(rEntity.isPresent()){
+            res = 1;
+        }
+
+        log.info(this.getClass().getName() + ".getUserLogin End!!!");
+        return res;
     }
 
     @Override
     public void deleteUserInfo(UserInfoDTO pDTO) throws Exception {
         log.info(this.getClass().getName() + ".deleteUserInfo Start!!");
-
         String userId = pDTO.userId();
+
         log.info("userId : " + userId);
 
         userInfoRepository.deleteById(userId);

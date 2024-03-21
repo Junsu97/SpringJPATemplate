@@ -14,7 +14,6 @@ public record UserInfoDTO(
         String regDt,
         String chgId,
         String chgDt,
-
         String existYn
 ) {
 }
